@@ -54,7 +54,7 @@ class PrinterMonitor(SnmpPlugin):
         maps.append(ObjectMap(
             compname = 'hw',
             data={
-                'serialnumber': getdata['prtGeneralSerialNumber'],
+                'serialNumber': getdata['prtGeneralSerialNumber'],
             }
         ))
 
