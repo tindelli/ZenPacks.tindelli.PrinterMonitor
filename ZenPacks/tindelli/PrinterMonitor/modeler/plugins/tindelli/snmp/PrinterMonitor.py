@@ -60,7 +60,7 @@ class PrinterMonitor(SnmpPlugin):
 
         maps.append(ObjectMap(
             data={
-                'colorSupport': True if getdata['numberColors'] else False,
+                'colorSupport': True if getData['numberColors'] else False,
                 'prtMarkerMarkTech': PrtMarkerMarkTechTC[getData['prtMarkerMarkTech']]
             }
         ))
