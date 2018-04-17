@@ -3,9 +3,9 @@
 # or saved.  Do not modify them directly here.
 # NB: PACKAGES is deprecated
 NAME = "ZenPacks.tindelli.PrinterMonitor"
-VERSION = "1.0.0dev"
-AUTHOR = "Your Name Here"
-LICENSE = ""
+VERSION = "1.0.0dev1"
+AUTHOR = "Tom Indelli"
+LICENSE = "Apache"
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.tindelli']
 PACKAGES = ['ZenPacks', 'ZenPacks.tindelli', 'ZenPacks.tindelli.PrinterMonitor']
 INSTALL_REQUIRES = ['ZenPacks.zenoss.ZenPackLib']
