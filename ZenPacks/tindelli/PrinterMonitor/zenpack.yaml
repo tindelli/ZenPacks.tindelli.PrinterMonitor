@@ -1,9 +1,12 @@
 name: ZenPacks.tindelli.PrinterMonitor
 
 classes:
+  DEFAULTS:
+    base: [zenpacklib.Component]
+
   PrinterDevice:
     base: [zenpacklib.Device]
-    label: Printer
+    label: Device
     properties:
       colorSupport:
         type: boolean
@@ -19,4 +22,3 @@ device_classes:
         - tindelli.snmp.PrinterMonitor
         - zenoss.snmp.NewDeviceMap
         - zenoss.snmp.DeviceMap
-        - zenoss.snmp.InterfaceMap

@@ -75,6 +75,7 @@ class UpdatePrinterzProperties(ZenPackMigration):
 
 		LOG.info("Finished converting devices.")
 
+
 def reclass_device(device, klass):
 	"""Change the __class__ of device to klass.
 
