@@ -31,7 +31,6 @@ class UpdatePrinterzProperties(ZenPackMigration):
 	version = Version(1, 0, 0)
 
 	def migrate(self, dmd):
-		dmd = pack.getDmd()
 
 		try:
 			deviceclass = dmd.Devices.getOrganizer(DEVICECLASS)
