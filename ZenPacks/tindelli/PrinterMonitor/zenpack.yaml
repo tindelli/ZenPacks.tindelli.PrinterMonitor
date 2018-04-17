@@ -1,0 +1,22 @@
+name: ZenPacks.tindelli.PrinterMonitor
+
+classes:
+  PrinterDevice:
+    base: [zenpacklib.Device]
+    label: Printer
+    properties:
+      colorSupport:
+        type: boolean
+      prtMarkerMarkTech:
+        type: string
+
+device_classes:
+  /Printer:
+    zProperties:
+      zPythonClass: ZenPacks.tindelli.PrinterMonitor.PrinterDevice
+      zSnmpMonitorIgnore: false
+      zCollectorPlugins:
+        - tindelli.snmp.PrinterMonitor
+        - zenoss.snmp.NewDeviceMap
+        - zenoss.snmp.DeviceMap
+        - zenoss.snmp.InterfaceMap

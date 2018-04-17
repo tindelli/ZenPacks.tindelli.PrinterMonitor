@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<objects>
+<!-- ('', 'zport', 'dmd', 'Devices', 'Printer') -->
+<object id='/zport/dmd/Devices/Printer' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
+<property visible="True" description="Python module used when creating a new device instances." type="string" id="zPythonClass" label="Python Class" >
+ZenPacks.tindelli.PrinterMonitor.PrinterDevice
+</property>
+<object id='Laser' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
+</object>
+<object id='InkJet' module='Products.ZenModel.DeviceClass' class='DeviceClass'>
+</object>
+</object>
+</objects>
