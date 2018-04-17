@@ -47,21 +47,21 @@ class PrinterMonitor(SnmpPlugin):
 
     def process(self, device, results, log):
         log.info('processing %s for device %s', self.name(), device.id)
-        getData, tableData = results
+        getdata, tabledata = results
 
         maps = []
 
         maps.append(ObjectMap(
             compname = 'hw',
             data={
-                'serialnumber': getData['prtGeneralSerialNumber'],
+                'serialnumber': getdata['prtGeneralSerialNumber'],
             }
         ))
 
         maps.append(ObjectMap(
             data={
-                'colorSupport': True if getData['numberColors'] else False,
-                'prtMarkerMarkTech': PrtMarkerMarkTechTC[getData['prtMarkerMarkTech']]
+                'colorSupport': True if getdata['numberColors'] else False,
+                'prtMarkerMarkTech': PrtMarkerMarkTechTC[getdata['prtMarkerMarkTech']]
             }
         ))
 
