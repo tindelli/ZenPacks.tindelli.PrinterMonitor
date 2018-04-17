@@ -28,9 +28,9 @@ except ImportError:
 class UpdatePrinterzProperties(ZenPackMigration):
 	"""Update zProperties for /Printer device class."""
 
-	version = Version(0, 0, 1)
+	version = Version(1, 0, 0)
 
-	def migrate(self, pack):
+	def migrate(self, dmd):
 		dmd = pack.getDmd()
 
 		try:
