@@ -66,17 +66,17 @@ class UpdatePrinterzProperties(ZenPackMigration):
 			"Reclassifying devices as %s",
 			TO_zPythonClass)
 
-		with pausedAndOptimizedReindexing:
-			for device in deviceclass.getSubDevicesGen():
-				if not isinstance(device, PrinterDevice):
-					reclass_device(device, PrinterDevice)
+#		with pausedAndOptimizedReindexing:
+#			for device in deviceclass.getSubDevicesGen():
+#				if not isinstance(device, PrinterDevice):
+#					reclass_device(device, PrinterDevice)
 
-					device.buildRelations()
+#					device.buildRelations()
 
 		LOG.info("Finished converting devices.")
 
 
-def reclass_device(device, klass):
+#def reclass_device(device, klass):
 	"""Change the __class__ of device to klass.
 
     This isn't quite as simple as "device.__class__ = klass" because ZODB
@@ -93,16 +93,16 @@ def reclass_device(device, klass):
 
     """
     # For example: dmd.Devices.Server.SSH.Linux.devices._objects
-    container = device.getPrimaryParent()._objects
+#    container = device.getPrimaryParent()._objects
 
     # Get the unwrapped object.
-    unwrapped_device = container[device.id]
+#    unwrapped_device = container[device.id]
 
     # Delete the object's persistent reference.
-    del container[unwrapped_device.id]
+#    del container[unwrapped_device.id]
 
     # Change the unwrapped object's class.
-    unwrapped_device.__class__ = klass
+#    unwrapped_device.__class__ = klass
 
     # Add back a persistent reference to the newly-classed object.
-    container[unwrapped_device.id] = unwrapped_device
+#    container[unwrapped_device.id] = unwrapped_device
