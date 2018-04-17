@@ -20,63 +20,63 @@ from Products.ZenModel.ZenPack import ZenPackMigration
 from ZenPacks.tindelli.PrinterMonitor.PrinterDevice import PrinterDevice
 
 try:
-	from Products.ZenUtils.events import pausedAndOptimizedReindexing
+    from Products.ZenUtils.events import pausedAndOptimizedReindexing
 except ImportError:
-	def pausedAndOptimizedReindexing():
-		yield
+    def pausedAndOptimizedReindexing():
+        yield
 
 class UpdatePrinterzProperties(ZenPackMigration):
-	"""Update zProperties for /Printer device class."""
+    """Update zProperties for /Printer device class."""
 
-	version = Version(1, 0, 0)
+    version = Version(1, 0, 0)
 
-	def migrate(self, dmd):
+    def migrate(self, dmd):
 
-		try:
-			deviceclass = dmd.Devices.getOrganizer(DEVICECLASS)
-		except Exception:
-			return
+        try:
+            deviceclass = dmd.Devices.getOrganizer(DEVICECLASS)
+        except Exception:
+            return
 
-		if deviceclass.getZ(PROP_zPythonClass) != TO_zPythonClass:
-			LOG.info(
-				"changing %s %s to %s",
-				deviceclass.getOrganizerName(),
-				PROP_zPythonClass,
-				TO_zPythonClass)
+        if deviceclass.getZ(PROP_zPythonClass) != TO_zPythonClass:
+            LOG.info(
+                "changing %s %s to %s",
+                deviceclass.getOrganizerName(),
+                PROP_zPythonClass,
+                TO_zPythonClass)
 
-			deviceclass.setZenProperty(PROP_zPythonClass, TO_zPythonClass)
+            deviceclass.setZenProperty(PROP_zPythonClass, TO_zPythonClass)
 
-		if not deviceclass.hasProperty(PROP_zSnmpMonitorIgnore):
-			LOG.info(
-				"Setting explicit %s override on %s",
-				PROP_zSnmpMonitorIgnore,
-				deviceclass.getOrganizerName())
-			deviceclass.setZenProperty(PROP_zSnmpMonitorIgnore, True)
-			deviceclass.setZenProperty(PROP_zSnmpMonitorIgnore, False)
+        if not deviceclass.hasProperty(PROP_zSnmpMonitorIgnore):
+            LOG.info(
+                "Setting explicit %s override on %s",
+                PROP_zSnmpMonitorIgnore,
+                deviceclass.getOrganizerName())
+            deviceclass.setZenProperty(PROP_zSnmpMonitorIgnore, True)
+            deviceclass.setZenProperty(PROP_zSnmpMonitorIgnore, False)
 
-		LOG.info(
-			"Updating %s of %s",
-			PROP_zCollectorPlugins,
-			deviceclass.getOrganizerName())
+        LOG.info(
+            "Updating %s of %s",
+            PROP_zCollectorPlugins,
+            deviceclass.getOrganizerName())
 
-		deviceclass.setZenProperty(PROP_zCollectorPlugins, MODELER_PLUGINS)
+        deviceclass.setZenProperty(PROP_zCollectorPlugins, MODELER_PLUGINS)
 
-		LOG.info(
-			"Reclassifying devices as %s",
-			TO_zPythonClass)
+        LOG.info(
+            "Reclassifying devices as %s",
+            TO_zPythonClass)
 
-#		with pausedAndOptimizedReindexing:
-#			for device in deviceclass.getSubDevicesGen():
-#				if not isinstance(device, PrinterDevice):
-#					reclass_device(device, PrinterDevice)
+#       with pausedAndOptimizedReindexing:
+#           for device in deviceclass.getSubDevicesGen():
+#               if not isinstance(device, PrinterDevice):
+#                   reclass_device(device, PrinterDevice)
 
-#					device.buildRelations()
+#                   device.buildRelations()
 
-		LOG.info("Finished converting devices.")
+        LOG.info("Finished converting devices.")
 
 
 #def reclass_device(device, klass):
-	"""Change the __class__ of device to klass.
+    """Change the __class__ of device to klass.
 
     This isn't quite as simple as "device.__class__ = klass" because ZODB
     stores the class in the persistent reference to the object, not in the

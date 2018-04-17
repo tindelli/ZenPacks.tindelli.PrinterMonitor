@@ -3,7 +3,7 @@
 # or saved.  Do not modify them directly here.
 # NB: PACKAGES is deprecated
 NAME = "ZenPacks.tindelli.PrinterMonitor"
-VERSION = "1.0.0dev1"
+VERSION = "1.0.0.dev1"
 AUTHOR = "Tom Indelli"
 LICENSE = "Apache"
 NAMESPACE_PACKAGES = ['ZenPacks', 'ZenPacks.tindelli']
