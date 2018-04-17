@@ -106,3 +106,5 @@ class UpdatePrinterzProperties(ZenPackMigration):
 
     # Add back a persistent reference to the newly-classed object.
 #    container[unwrapped_device.id] = unwrapped_device
+
+UpdatePrinterzProperties()
